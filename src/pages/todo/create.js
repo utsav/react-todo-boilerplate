@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
+import TodoForm from '../../components/todo/form'
 
-import Loader from '../components/loader'
-import TodoForm from '../components/todoForm'
-
-class EditTodo extends Component {
+class CreateTodo extends Component {
     constructor(props) {
         super(props)
 
@@ -13,17 +11,10 @@ class EditTodo extends Component {
         }
     }
 
-    componentDidMount() {
-        fetch("http://localhost:3030/todo/" + this.props.match.params.id)
-        .then(resp => resp.json())
-        .then(todo => this.setState({ title: todo.title, description: todo.description , loading: false }) )
-    }
-
     onSubmit = (e) => {
         e.preventDefault();
-
-        fetch("http://localhost:3030/todo/" + this.props.match.params.id, {
-            method: 'PUT',
+        fetch("http://localhost:3030/todo", {
+            method: 'POST',
             body: JSON.stringify(this.state),
             headers:{
               'Content-Type': 'application/json'
@@ -41,14 +32,10 @@ class EditTodo extends Component {
     }
 
     render() {
-        const { title, description, loading } = this.state;
-
-        if(loading) {
-            return <Loader />
-        }
+        const { title, description } = this.state;
 
         return <TodoForm title={title} description={description} onInputChange={this.onInputChange} onSubmit={this.onSubmit}  />
     }
 }
 
-export default EditTodo
+export default CreateTodo

@@ -1,21 +1,21 @@
 import React from 'react';
 import { Route, withRouter, Switch } from 'react-router-dom'
 
-import Master from './components/master'
-import Todos from './containers/todos'
-import EditTodo from './containers/editTodo';
-import CreateTodo from './containers/createTodo';
+import Layout from './components/layout'
+import TodoList from './pages/todo/list'
+import EditTodo from './pages/todo/edit';
+import CreateTodo from './pages/todo/create';
 
 import 'bootstrap/dist/css/bootstrap.css';
 
 const App = () => {
   return <Switch>
-    <Master>
-      <Route exact path="/" component={Todos} />
-      <Route exact path="/todos" component={Todos} />
+    <Layout>
+      <Route exact path="/" component={TodoList} />
+      <Route exact path="/todos" component={TodoList} />
       <Route sensitive exact path="/todos/create" component={CreateTodo} />
       <Route exact path="/todos/edit/:id" component={EditTodo} />
-    </Master>
+    </Layout>
   </Switch>
 }
 export default withRouter(App);

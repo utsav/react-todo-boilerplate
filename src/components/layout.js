@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Master = ({ children }) => {
+const Layout = ({ children }) => {
   return <div>
     <nav className="navbar navbar-expand-sm bg-light">
       <Link className="navbar-brand" to="/todos">Todos</Link>
@@ -19,4 +19,4 @@ const Master = ({ children }) => {
   </div>
 }
 
-export default Master
+export default Layout

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-import Loader from '../components/loader'
+import Loader from '../../components/loader'
 
 class Todos extends Component {
     constructor(props) {
@@ -59,7 +59,7 @@ class Todos extends Component {
                             <td>
                                 <div className="btn-group">
                                     <Link className="btn btn-primary" to={`/todos/edit/${todo.id}`}>Edit</Link>
-                                    <a className="btn btn-danger" href="javascript:void(0)" onClick={() => this.doDelete(todo.id)} >Delete</a>
+                                    <a className="btn btn-danger" onClick={() => this.doDelete(todo.id)} >Delete</a>
                                 </div>
                             </td>
                         </tr>
